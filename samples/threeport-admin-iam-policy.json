@@ -1,0 +1,103 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "EC2andIAMPermissions",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:CreateVpc",
+                "ec2:DeleteVpc",
+                "ec2:ModifyVpcAttribute",
+                "ec2:CreateSubnet",
+                "ec2:DeleteSubnet",
+                "ec2:ModifySubnetAttribute",
+                "ec2:DescribeSubnets",
+                "ec2:CreateRouteTable",
+                "ec2:DeleteRouteTable",
+                "ec2:CreateRoute",
+                "ec2:DeleteRoute",
+                "ec2:AssociateRouteTable",
+                "ec2:DisassociateRouteTable",
+                "ec2:AllocateAddress",
+                "ec2:ReleaseAddress",
+                "ec2:AssociateAddress",
+                "ec2:DisassociateAddress",
+                "ec2:CreateInternetGateway",
+                "ec2:DeleteInternetGateway",
+                "ec2:AttachInternetGateway",
+                "ec2:DetachInternetGateway",
+                "ec2:CreateNatGateway",
+                "ec2:DeleteNatGateway",
+                "ec2:CreateTags",
+                "ec2:DeleteTags",
+                "ec2:DescribeTags",
+                "ec2:DescribeNatGateways",
+                "ec2:DescribeAvailabilityZones"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "EKSPermissions",
+            "Effect": "Allow",
+            "Action": [
+                "eks:CreateCluster",
+                "eks:DeleteCluster",
+                "eks:UpdateClusterConfig",
+                "eks:CreateNodegroup",
+                "eks:DeleteNodegroup",
+                "eks:UpdateNodegroupConfig",
+                "eks:DescribeNodegroup",
+                "eks:TagResource",
+                "eks:UntagResource",
+				"eks:DescribeCluster",
+                "eks:CreateAddon",
+                "eks:DeleteAddon",
+                "eks:UpdateAddon"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "IAMPermissions",
+            "Effect": "Allow",
+            "Action": [
+                "iam:CreateOpenIDConnectProvider",
+                "iam:DeleteOpenIDConnectProvider",
+                "iam:UpdateOpenIDConnectProviderThumbprint",
+                "iam:CreatePolicy",
+                "iam:DeletePolicy",
+                "iam:CreatePolicyVersion",
+                "iam:DeletePolicyVersion",
+                "iam:SetDefaultPolicyVersion",
+                "iam:GetRole",
+                "iam:CreateRole",
+                "iam:DeleteRole",
+                "iam:UpdateRole",
+                "iam:PutRolePolicy",
+                "iam:DeleteRolePolicy",
+                "iam:AttachRolePolicy",
+                "iam:DetachRolePolicy",
+                "iam:TagRole",
+                "iam:UntagRole",
+                "iam:ListAttachedRolePolicies"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "IAMPassRolePermissions",
+            "Effect": "Allow",
+            "Action": "iam:PassRole",
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "iam:PassedToService": [
+                        "ec2.amazonaws.com",
+                        "vpc.amazonaws.com",
+                        "eks.amazonaws.com",
+                        "ebs.amazonaws.com",
+                        "route53.amazonaws.com"
+                    ]
+                }
+            }
+        }
+    ]
+}
