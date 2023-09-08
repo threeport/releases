@@ -2,12 +2,13 @@ Workload:
   Name: "wordpress"
   YAMLDocument: "wordpress-manifest.yaml"
   KubernetesRuntimeInstance:
-    Name: compute-space-dev-0-0
+    Name: threeport-test
   # DomainName:
   #   Name: www.example.com
   #   Zone: Public
   #   AdminEmail: admin@example.com
   # Gateway:
+  #   Name: wordpress-gateway
   #   TCPPort: 443
   #   Path: /
   #   TLSEnabled: true
